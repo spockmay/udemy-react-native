@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 
 import Animated, { LinearTransition} from 'react-native-reanimated'
 
@@ -8,10 +8,12 @@ import GoalInput from './components/GoalInput';
 
 export default function App() {
 
-  const [goals, setGoals] = useState([]);  
+  const [goals, setGoals] = useState([]);
+  const [modalIsVisible, setModalIsVisible] = useState(false)
 
   function addGoalHandler(enteredGoalText) {
     setGoals((currentGoals) => [...currentGoals, {text: enteredGoalText, key: Math.random().toString()},]);
+    endAddGoalHandler()
   };
 
   function deleteGoalHandler(id) {
@@ -20,9 +22,17 @@ export default function App() {
     });
   }
 
+  function startAddGoalHandler() {
+    setModalIsVisible(true);
+  }
+  function endAddGoalHandler() {
+    setModalIsVisible(false);
+  }
+
   return (
     <View style={ styles.appContainer}>
-      <GoalInput onAddGoal={addGoalHandler}/>
+      <Button title='Add New Goal' onPress={startAddGoalHandler} />
+      <GoalInput onAddGoal={addGoalHandler} visible={modalIsVisible} onCancel={endAddGoalHandler} />
       <View style={styles.goalsContainer}>
         <Animated.FlatList itemLayoutAnimation={LinearTransition} data={goals} renderItem={(itemData) => {
           return(<GoalItem text={itemData.item.text} onDeleteItem={deleteGoalHandler} id={itemData.item.key} />);
