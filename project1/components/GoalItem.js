@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
         margin: 10,
         borderWidth: 1,
         borderRadius: 10,
+        backgroundColor: 'lightgray',
       },
     goalText: {
         padding: 10,

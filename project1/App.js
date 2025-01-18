@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, View, Button, } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 
 import Animated, { LinearTransition} from 'react-native-reanimated'
 
@@ -30,15 +31,18 @@ export default function App() {
   }
 
   return (
-    <View style={ styles.appContainer}>
-      <Button title='Add New Goal' onPress={startAddGoalHandler} />
-      <GoalInput onAddGoal={addGoalHandler} visible={modalIsVisible} onCancel={endAddGoalHandler} />
-      <View style={styles.goalsContainer}>
-        <Animated.FlatList itemLayoutAnimation={LinearTransition} data={goals} renderItem={(itemData) => {
-          return(<GoalItem text={itemData.item.text} onDeleteItem={deleteGoalHandler} id={itemData.item.key} />);
-        }} />
+    <>
+      <StatusBar style='light' />
+      <View style={ styles.appContainer}>
+        <Button title='Add New Goal' onPress={startAddGoalHandler} color="#a065ec" />
+        <GoalInput onAddGoal={addGoalHandler} visible={modalIsVisible} onCancel={endAddGoalHandler} />
+        <View style={styles.goalsContainer}>
+          <Animated.FlatList itemLayoutAnimation={LinearTransition} data={goals} renderItem={(itemData) => {
+            return(<GoalItem text={itemData.item.text} onDeleteItem={deleteGoalHandler} id={itemData.item.key} />);
+          }} />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
