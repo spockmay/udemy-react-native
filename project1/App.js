@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
+import Animated, { LinearTransition} from 'react-native-reanimated'
 
 import GoalItem from './components/GoalItem';
 import GoalInput from './components/GoalInput';
@@ -12,12 +14,18 @@ export default function App() {
     setGoals((currentGoals) => [...currentGoals, {text: enteredGoalText, key: Math.random().toString()},]);
   };
 
+  function deleteGoalHandler(id) {
+    setGoals((currentGoals) => {
+      return currentGoals.filter((goal) => goal.key !== id);
+    });
+  }
+
   return (
     <View style={ styles.appContainer}>
       <GoalInput onAddGoal={addGoalHandler}/>
       <View style={styles.goalsContainer}>
-        <FlatList data={goals} renderItem={(itemData) => {
-          return(<GoalItem text={itemData.item.text} />);
+        <Animated.FlatList itemLayoutAnimation={LinearTransition} data={goals} renderItem={(itemData) => {
+          return(<GoalItem text={itemData.item.text} onDeleteItem={deleteGoalHandler} id={itemData.item.key} />);
         }} />
       </View>
     </View>
