@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, ImageBackground } from 'react-native';
+import { StyleSheet, View, ImageBackground, } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient'
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState } from 'react'
 
 import StartGameScreen from './screens/StartGameScreen';
@@ -16,17 +17,20 @@ export default function App() {
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
   
   if (userNum) {
-    screen = <GameScreen />;
+    screen = <GameScreen numToGuess={userNum}/>;
   };
   
   return (
-    <><StatusBar style='light' />
+    <>
+      <StatusBar style='light' />
       <LinearGradient style={styles.rootScreen} colors={['#72063c','#ddb52f']}>
         <ImageBackground source={require('./assets/images/background.png')} resizeMode='cover' style={styles.rootScreen} imageStyle={styles.backgroundImage}>
-          {screen}
+          <SafeAreaView style={{ flex: 1 }}>
+            {screen}
+          </SafeAreaView>
         </ImageBackground>
       </LinearGradient>
-    </>
+      </>
   );
 }
 

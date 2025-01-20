@@ -1,12 +1,15 @@
 import { View, Text, StyleSheet } from 'react-native'
 import PrimaryButton from '../components/PrimaryButton'
 
-function GameScreen() {
+import TitleText from '../components/TitleText';
+
+
+function GameScreen(props) {   
     return (
         <View style={styles.screen}>
-            <Text>Opponent's Guess</Text>
-            <Text>GUESS</Text>
-            <View>
+            <TitleText>Opponent's Guess</TitleText>
+            <Text>{props.numToGuess}</Text>
+            <View style={styles.buttonRow}>
                 <PrimaryButton>+</PrimaryButton>
                 <PrimaryButton>-</PrimaryButton>
             </View>
@@ -21,6 +24,9 @@ export default GameScreen
 const styles = StyleSheet.create({
     screen: { 
         flex: 1,
-        padding: 12,
-    }
+        padding: 24,
+    },
+    buttonRow: {
+        flexDirection: 'row',
+    },
 });
