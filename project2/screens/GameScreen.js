@@ -31,7 +31,7 @@ function GameScreen(props) {
             console.log('end game')
             props.onGameOver(true)
         }
-    });
+    }, [guess, props.numToGuess, props.onGameOver]);
 
     return (
         <View style={styles.screen}>
