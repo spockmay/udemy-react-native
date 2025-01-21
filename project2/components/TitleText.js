@@ -11,8 +11,8 @@ export default GameScreen
 
 const styles = StyleSheet.create({
     title: {
+        fontFamily: 'open-sans-bold',
         fontSize: 24,
-        fontWeight: 'bold',
         color: Colors.secondary500,
         textAlign: 'center',
         borderWidth: 2,

@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     },
     instructions: {
         color: Colors.secondary500,
+        fontFamily: 'open-sans',
         fontSize: 24,
     }
   });

@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native'
-import PrimaryButton from '../components/PrimaryButton'
+import Entypo from '@expo/vector-icons/Entypo';
 
+import PrimaryButton from '../components/PrimaryButton'
 import TitleText from '../components/TitleText';
 import Colors from '../utils/colors'
 import Card from '../components/Card';
@@ -40,8 +41,8 @@ function GameScreen(props) {
             <Card>
                 <Text style={styles.guessText}>{guess}</Text>
                 <View style={styles.buttonRow}>
-                    <PrimaryButton onPress={guessTooHigh}>+</PrimaryButton>
-                    <PrimaryButton onPress={guessTooLow}>-</PrimaryButton>
+                    <PrimaryButton onPress={guessTooHigh}><Entypo name="plus" size={24} color="white" /></PrimaryButton>
+                    <PrimaryButton onPress={guessTooLow}><Entypo name="minus" size={24} color="white" /></PrimaryButton>
                 </View>
             </Card>
             <View>
