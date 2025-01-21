@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { View, TextInput, StyleSheet } from 'react-native'
+import { View, TextInput, StyleSheet, Alert } from 'react-native'
 import PrimaryButton from '../components/PrimaryButton';
 import Colors from '../utils/colors'
 
@@ -17,7 +17,7 @@ function StartGameScreen({onPickNumber}) {
     function confirmInputHandler() {
         const chosenNum = parseInt(enteredNum)
         if (isNaN(chosenNum) || chosenNum < 1 || chosenNum > 99) {
-            alert("Enter a number between 1 and 99!");
+            Alert.alert("Invalid entry", "Enter a number between 1 and 99!");
             return;
         }
         

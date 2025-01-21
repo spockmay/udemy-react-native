@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native'
 import PrimaryButton from '../components/PrimaryButton'
 
@@ -26,9 +26,12 @@ function GameScreen(props) {
         setGuess(guess - computeNewDelta(delta));
     }
 
-    if (guess === props.numToGuess) {
-        console.log('end game')
-    }
+    useEffect(() => {
+        if (guess === props.numToGuess) {
+            console.log('end game')
+            props.onGameOver(true)
+        }
+    });
 
     return (
         <View style={styles.screen}>

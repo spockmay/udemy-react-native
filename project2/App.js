@@ -6,10 +6,12 @@ import { useState } from 'react'
 
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
+import GameOverScreen from './screens/GameOverScreen';
 import Colors from './utils/colors'
 
 export default function App() {
   const [userNum, setUserNum] = useState()
+  const [gameOver, setGameOver] = useState(false)
 
   function pickedNumberHandler(pickedNumber) {
     setUserNum(pickedNumber);
@@ -18,8 +20,12 @@ export default function App() {
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
   
   if (userNum) {
-    screen = <GameScreen numToGuess={userNum}/>;
+    screen = <GameScreen numToGuess={userNum} onGameOver={setGameOver}/>;
   };
+
+  if (gameOver) {
+    screen = <GameOverScreen />
+  }
   
   return (
     <>
