@@ -4,6 +4,7 @@ import PrimaryButton from '../components/PrimaryButton'
 
 import TitleText from '../components/TitleText';
 import Colors from '../utils/colors'
+import Card from '../components/Card';
 
 
 function GameScreen(props) {
@@ -36,11 +37,13 @@ function GameScreen(props) {
     return (
         <View style={styles.screen}>
             <TitleText>Opponent's Guess</TitleText>
-            <Text style={styles.guessText}>{guess}</Text>
-            <View style={styles.buttonRow}>
-                <PrimaryButton onPress={guessTooHigh}>+</PrimaryButton>
-                <PrimaryButton onPress={guessTooLow}>-</PrimaryButton>
-            </View>
+            <Card>
+                <Text style={styles.guessText}>{guess}</Text>
+                <View style={styles.buttonRow}>
+                    <PrimaryButton onPress={guessTooHigh}>+</PrimaryButton>
+                    <PrimaryButton onPress={guessTooLow}>-</PrimaryButton>
+                </View>
+            </Card>
             <View>
                 <Text>Round Logs</Text>
             </View>
