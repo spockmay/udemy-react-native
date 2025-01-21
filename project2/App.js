@@ -6,6 +6,7 @@ import { useState } from 'react'
 
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
+import Colors from './utils/colors'
 
 export default function App() {
   const [userNum, setUserNum] = useState()
@@ -23,7 +24,7 @@ export default function App() {
   return (
     <>
       <StatusBar style='light' />
-      <LinearGradient style={styles.rootScreen} colors={['#72063c','#ddb52f']}>
+      <LinearGradient style={styles.rootScreen} colors={[Colors.primary500, Colors.secondary500]}>
         <ImageBackground source={require('./assets/images/background.png')} resizeMode='cover' style={styles.rootScreen} imageStyle={styles.backgroundImage}>
           <SafeAreaView style={{ flex: 1 }}>
             {screen}
