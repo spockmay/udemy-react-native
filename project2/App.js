@@ -14,7 +14,7 @@ import Colors from './utils/colors'
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  const [userNum, setUserNum] = useState()
+  const [userNum, setUserNum] = useState(null)
   const [gameOver, setGameOver] = useState(false)
   const [numRounds, setNumRounds] = useState(0)
 
@@ -38,15 +38,20 @@ export default function App() {
   }
 
   function startNewGame() {
-    setUserNum();
+    setUserNum(null);
     setGameOver(false);
     setNumRounds(0);
+  }
+
+  function onGameOver(tookRounds) {
+    setGameOver(true);
+    setNumRounds(tookRounds);
   }
 
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
   
   if (userNum) {
-    screen = <GameScreen numToGuess={userNum} onGameOver={setGameOver}/>;
+    screen = <GameScreen numToGuess={userNum} onGameOver={onGameOver}/>;
   };
 
   if (gameOver) {
