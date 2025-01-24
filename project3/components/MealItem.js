@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
 
 
-function MealItem({title, imageURL}) {
+function MealItem({title, imageURL, onPress}) {
     return (
         <View style={styles.container}>
-            <Pressable style={({pressed}) => [styles.button, pressed ? styles.buttonPressed : null]}>
+            <Pressable style={({pressed}) => [styles.button, pressed ? styles.buttonPressed : null]} onPress={onPress}>
                 <Image source={{uri: imageURL}} style={styles.image}/>
                 <Text style={styles.title}>{title}</Text>
             </Pressable>

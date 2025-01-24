@@ -1,17 +1,29 @@
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
+import { useLayoutEffect } from 'react';
+
 import MealDetails from '../components/MealDetail'
+import { MEALS } from '../data/dummy-data';
 
 function MealDetailsScreen({navigation, route}) {
     mealId = route.params.mealId;
-    const displayedMeals = MEALS.filter( (mealItem)=> {return mealItem.id===mealId} )
+    const displayedMeal = MEALS.find( (mealItem)=> mealItem.id===mealId );
+
+    // Set the navigation title
+    useLayoutEffect(() => {
+        navigation.setOptions({title: displayedMeal.title})
+    }, [categoryId, navigation])
+    
     return (
-    <View>
-        <MealDetails></MealDetails>
-    </View>);
+        <View style={styles.container}>
+            <MealDetails {...displayedMeal}></MealDetails>
+        </View>
+    );
 }
 
 export default MealDetailsScreen;
 
 const styles=StyleSheet.create({
-
+    container: {
+        padding: 16,
+    }
 })

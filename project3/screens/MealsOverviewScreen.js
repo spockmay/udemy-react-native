@@ -5,17 +5,14 @@ import MealItem from '../components/MealItem';
 import { MEALS, CATEGORIES } from '../data/dummy-data';
 
 function MealsOverviewsScreen({navigation, route}) {
-    categoryId = route.params.categoryId;
+    const categoryId = route.params.categoryId;
 
-    function pressHandler() {
-        navigation.navigate('MealDetails', {mealId: itemData.item.id});
-    }    
 
     const displayedMeals = MEALS.filter( (mealItem)=> {
         return mealItem.categoryIds.indexOf(categoryId) >= 0;
     })
 
-
+    // set page navigation title
     useLayoutEffect(() => {
         const categoryTitle = CATEGORIES.find((category) => category.id === categoryId).title;
 
@@ -23,9 +20,14 @@ function MealsOverviewsScreen({navigation, route}) {
     }, [categoryId, navigation])
 
     function renderMealItem(itemData) {
+        function pressHandler() {
+            navigation.navigate('MealDetails', {mealId: itemData.item.id});
+        }    
+    
+
         return (
             <View>
-                <MealItem title={itemData.item.title} imageURL={itemData.item.imageUrl} />
+                <MealItem title={itemData.item.title} imageURL={itemData.item.imageUrl} onPress={pressHandler}/>
             </View>
         )
     }

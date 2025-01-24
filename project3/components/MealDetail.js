@@ -1,15 +1,14 @@
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
 
 
-function MealDetails({meal}) {
+function MealDetails({affordability,complexity,duration,ingredients,steps}) {
     return (
     <View>
-        <Text>{meal.title}</Text>
-        <Text>{meal.affordability}</Text>
-        <Text>{meal.complexity}</Text>
-        <Text>{meal.duration}m</Text>   
-        <Text>{meal.ingredients}</Text>
-        <Text>{meal.steps}</Text>        
+        <Text>{affordability}</Text>
+        <Text>{complexity}</Text>
+        <Text>{duration}m</Text>   
+        <Text>{ingredients}</Text>
+        <Text>{steps}</Text>        
     </View>);
 }
 
