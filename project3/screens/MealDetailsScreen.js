@@ -11,7 +11,7 @@ function MealDetailsScreen({navigation, route}) {
     // Set the navigation title
     useLayoutEffect(() => {
         navigation.setOptions({title: displayedMeal.title})
-    }, [categoryId, navigation])
+    }, [mealId, navigation])
     
     return (
         <View style={styles.container}>
