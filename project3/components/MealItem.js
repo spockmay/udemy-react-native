@@ -16,22 +16,22 @@ export default MealItem;
 
 const styles = StyleSheet.create({
     container: {
-        padding: 16,
         margin: 8,
         flex: 1,
         borderWidth: 1,
         borderRadius: 16,
         borderColor: 'white',
+        overflow: 'hidden',
     },
     image: {
-        width: 300,
+        width: '100%',
         height: 200,
-        marginBottom: 8,
     },
     title: {
         fontWeight: 'bold',
         fontSize: 16,
         color: 'white',
+        margin: 16,
     },
     button: {
 
