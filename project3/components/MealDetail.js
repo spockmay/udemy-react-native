@@ -10,9 +10,9 @@ function MealDetails({affordability,complexity,duration,ingredients,steps}) {
             <Text style={styles.text}>{affordability.toUpperCase()}</Text>
         </View>
         <Text style={[styles.text, styles.heading]}>INGREDIENTS:</Text>
-        <FlatList data={ingredients} keyExtractor={(ingredient)=>ingredient.index} renderItem={(itemData)=><Text style={styles.text}>• {itemData.item}</Text>} />
+        <FlatList data={ingredients} keyExtractor={(ingredient)=>ingredient} renderItem={(itemData)=><Text style={styles.text}>• {itemData.item}</Text>} />
         <Text style={[styles.text, styles.heading]}>DIRECTIONS:</Text>
-        <FlatList data={steps} keyExtractor={(step)=>step.index} renderItem={(itemData)=><Text style={styles.text}>{itemData.index+1}. {itemData.item}</Text>} />
+        <FlatList data={steps} keyExtractor={(step)=>step} renderItem={(itemData)=><Text style={styles.text}>{itemData.index+1}. {itemData.item}</Text>} />
     </View>);
 }
 
