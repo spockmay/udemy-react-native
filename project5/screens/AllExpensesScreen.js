@@ -2,6 +2,7 @@ import { View, Text } from 'react-native'
 import { useLayoutEffect } from 'react';
 
 import AddExpenseButton from '../components/AddExpenseButton';
+import ExpensesOverview from '../components/ExpensesOverview';
 
 function AllExpensesScreen({navigation, route}) {
     function headerButtonPressHandler() {
@@ -16,7 +17,7 @@ function AllExpensesScreen({navigation, route}) {
 
     return (
         <View>
-            <Text>All Expsnese</Text>
+            <ExpensesOverview period={"All expenses"} />
         </View>
     );
 }

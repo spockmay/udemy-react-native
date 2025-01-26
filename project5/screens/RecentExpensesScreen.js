@@ -2,6 +2,7 @@ import { View, Text } from 'react-native'
 import { useLayoutEffect } from 'react';
 
 import AddExpenseButton from '../components/AddExpenseButton';
+import ExpensesOverview from '../components/ExpensesOverview';
 
 function RecentExpensesScreen({navigation, route}) {
     function headerButtonPressHandler() {
@@ -16,7 +17,7 @@ function RecentExpensesScreen({navigation, route}) {
 
     return (
         <View>
-            <Text>Recent Expense</Text>
+            <ExpensesOverview period={"Last 7 days"} />
         </View>
     );
 }

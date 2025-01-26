@@ -11,7 +11,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import RecentExpensesScreen from './screens/RecentExpensesScreen';
 import AllExpensesScreen from './screens/AllExpensesScreen';
 import ModifyExpenseScreen from './screens/ModifyExpenseScreen';
-import AddExpenseButton from './components/AddExpenseButton';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -35,14 +34,13 @@ function TabNavigator() {
 export default function App() {
   return (
     <SafeAreaView style={{flex: 1}}>
-     <NavigationContainer>
-       <Stack.Navigator>
+      <StatusBar style="dark" />
+      <NavigationContainer>
+        <Stack.Navigator>
           <Stack.Screen name="Main" component={TabNavigator} options={{headerShown: false}}/>
           <Stack.Screen name="ModifyExpense" component={ModifyExpenseScreen} />
         </Stack.Navigator>
-
       </NavigationContainer>
-      <StatusBar style="dark" />
    </SafeAreaView>
   );
 }
